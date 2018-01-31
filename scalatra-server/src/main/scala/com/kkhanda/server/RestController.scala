@@ -10,12 +10,6 @@ class RestController extends ScalatraServlet with JacksonJsonSupport {
 
   protected implicit val jsonFormats: Formats = DefaultFormats
 
-  // Setting 'content-type' header to 'application/json' before each of the requests
-  // Not writing 'application/json' because mapping exists inside formats implementation
-  before() {
-    contentType = formats("json")
-  }
-
   post("/messages/") {
     val message = parsedBody.extract[Message]
     if (MessageData.messagesMap.contains(message.id)) {
