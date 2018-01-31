@@ -6,7 +6,7 @@ class RestControllerTests extends ScalatraFunSuite {
 
   addServlet(classOf[RestController], "/*")
 
-  test("GET / on RestServlet should return status 200"){
+  test("GET / on RestController should return status 200"){
     get("/"){
       status should equal (200)
     }
