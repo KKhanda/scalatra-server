@@ -1,7 +1,7 @@
 package com.kkhanda.server
 
 import com.kkhanda.server.dao.MessageData
-import com.kkhanda.server.models.Message
+import com.kkhanda.server.models.{Message, Text}
 import org.json4s.{DefaultFormats, Formats}
 import org.scalatra._
 import org.scalatra.json.JacksonJsonSupport
@@ -30,11 +30,35 @@ class RestController extends ScalatraServlet with JacksonJsonSupport {
   }
 
   get("/messages/") {
-    views.html.messages(MessageData.messagesList)
+    views.html.messages(MessageData.messagesMap)
   }
 
-  get("messages/:id") {
+  get("/messages/:id") {
+    val id: Int = params("id").toInt
+    if (MessageData.messagesMap.contains(id)) {
+      views.html.get_message(MessageData.messagesMap(id))
+    } else {
+      response.sendError(404, "Message with id " + id + " does not exist")
+    }
+  }
 
+  put("/messages/:id") {
+    val id: Int = params("id").toInt
+    val text = parsedBody.extract[Text]
+    if (MessageData.messagesMap.contains(id)) {
+      MessageData.messagesMap(id) = text.text
+    } else {
+      response.sendError(404, "Message with id " + id + " does not exist")
+    }
+  }
+
+  delete("/messages/:id") {
+    val id: Int = params("id").toInt
+    if (MessageData.messagesMap.contains(id)) {
+      MessageData.messagesMap.remove(id)
+    } else {
+      response.sendError(404, "Message with id " + id + " does not exist")
+    }
   }
 
 }

@@ -1,12 +1,13 @@
-@(messages: List[String])
+@import scala.collection.mutable
+@(messages: mutable.TreeMap[Int, String])
 
 @if(messages.isEmpty) {
     <p>There are no messages yet. Add some using POST method. </p>
 } else {
     <p>Here is the list of all created messages: </p>
     <ul>
-    @messages.map { message =>
-        <li>@message</li>
+    @messages.map { case (k, v) =>
+        <li>@k: @v</li>
     }
     </ul>
 }
