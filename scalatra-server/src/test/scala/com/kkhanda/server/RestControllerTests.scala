@@ -2,9 +2,9 @@ package com.kkhanda.server
 
 import org.scalatra.test.scalatest._
 
-class RestServletTests extends ScalatraFunSuite {
+class RestControllerTests extends ScalatraFunSuite {
 
-  addServlet(classOf[RestServlet], "/*")
+  addServlet(classOf[RestController], "/*")
 
   test("GET / on RestServlet should return status 200"){
     get("/"){

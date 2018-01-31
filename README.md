@@ -2,12 +2,12 @@
 Scalatra server application build during the Functional Programming and Scala Language course
 
 ## Build & Run ##
-
+From root directory: 
 ```sh
-$ cd Scalatra_Server
+$ cd scalatra_server
 $ sbt
 > jetty:start
 > browse
 ```
 
-If `browse` doesn't launch your browser, manually open [http://localhost:8080/](http://localhost:8080/) in your browser.
+If `browse` doesn't launch your browser, manually open [http://localhost:3000/](http://localhost:3000/) in your browser.

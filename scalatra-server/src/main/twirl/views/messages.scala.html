@@ -1,0 +1,8 @@
+@(messages: List[String])
+
+<h1>Here is the list of all created messages: </h1>
+<ul>
+    @messages.map {message =>
+      <li>@message</li>
+    }
+</ul>
