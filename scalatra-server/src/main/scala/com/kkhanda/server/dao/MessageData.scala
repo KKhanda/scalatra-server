@@ -4,7 +4,10 @@ import scala.collection.mutable
 
 object MessageData {
 
-  var messagesMap = mutable.HashMap(1 -> "Test 1", 2 -> "Test 2")
-  var messagesList: List[String] = messagesMap.values.toList
+  var messagesMap: mutable.HashMap[Int, String] = mutable.HashMap[Int, String]()
+
+  def messagesList: List[String] = {
+    messagesMap.values.toList
+  }
 
 }

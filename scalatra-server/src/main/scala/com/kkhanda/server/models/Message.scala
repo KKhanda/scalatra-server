@@ -1,3 +1,3 @@
 package com.kkhanda.server.models
 
-class Message(index: Int, message: String)
+class Message(val id: Int, val text: String)
